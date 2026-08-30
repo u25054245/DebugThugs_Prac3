@@ -1,0 +1,28 @@
+#include "Observer.h"
+#include "Subject.h"
+#include <algorithm>
+using namespace std;
+
+void Observer::trackSubject(Subject* sub){
+    if (sub && find(subjects.begin(), subjects.end(), sub) == subjects.end())
+    {
+        subjects.push_back(sub);
+    }
+    
+}
+
+void Observer::unrackSubject(Subject* sub){
+    subjects.erase(remove(subjects.begin(), subjects.end(), sub), subjects.end());
+}
+
+Observer::~Observer(){
+    vector<Subject*> det = subjects;
+    for (size_t i = 0; i < det.size(); i++)
+    {
+        Subject* s = det[i];
+        if(s != nullptr){
+            s->detach(this);
+        }
+    }
+    
+}
