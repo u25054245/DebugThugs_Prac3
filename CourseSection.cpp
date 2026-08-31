@@ -9,11 +9,16 @@
 using namespace std;
 
 void CourseSection::add(MarathonEvent* child){
-    children.pushback(child);
+    children.push_back(child);
 }
 
 void CourseSection::remove(MarathonEvent* child){
-    erase(children, child);
+    for(vector<MarathonEvent*>::iterator it = children.begin(); it !+ children.end(); ++it){
+        if(*it == child){
+            children.erase(it);
+            return;
+        }
+    }
 }
 
  MarathonEvent* CourseSection::release(MarathonEvent* child){
@@ -22,7 +27,7 @@ void CourseSection::remove(MarathonEvent* child){
 
 void CourseSection::open(){
     for(size_t i = 0; i < children.size(); ++i){
-        children[i].open();
+        children[i]->open();
 
     }
 
@@ -30,16 +35,16 @@ void CourseSection::open(){
 
 void CourseSection::close(){
     for(size_t i = 0; i < children.size(); ++i){
-        children[i].close();
+        children[i]->close();
 
     }
 
  }
 
-void CourseSection::getCapacity(){
+int CourseSection::getCapacity(){
     int total = 0;
     for(size_t i = 0; i < children.size(); ++i){
-        total += children[i].getCapacity();
+        total += children[i]->getCapacity();
 
     }
     return total;
@@ -49,7 +54,7 @@ void CourseSection::getCapacity(){
 void CourseSection::reportStatus(){
     string total = "";
     for(size_t i = 0; i < children.size(); ++i){
-        total += children[i].reportStatus();
+        total += children[i]->reportStatus();
 
     }
     return total;
@@ -60,7 +65,7 @@ void CourseSection::update(Subject* subject){
 
  }
 
-CourseSection::courseSection(){
-    vector<MarathonEvent*> children;
+CourseSection::CourseSection(){
+    
  }
 
