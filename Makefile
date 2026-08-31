@@ -1,5 +1,6 @@
 #u25420314 - Christian Khalid
 #u25054245 - Nathan Spavins
+#u25265718 - Jack Reid
 
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -g -O0

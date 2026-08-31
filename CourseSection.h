@@ -1,3 +1,7 @@
+//u25420314 - Christian Khalid
+//u25054245 - Nathan Spavins
+//u25265718 - Jack Reid
+
 #ifndef COURSESECTION_H
 #define COURSESECTION_H
 

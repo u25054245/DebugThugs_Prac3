@@ -1,0 +1,5 @@
+Run Instructions:
+    to compile run "make"
+    to run the event run "./EventFlow"
+
+    to check for memory leaks run "make valgrind"

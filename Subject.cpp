@@ -1,3 +1,7 @@
+//u25420314 - Christian Khalid
+//u25054245 - Nathan Spavins
+//u25265718 - Jack Reid
+
 #include "Subject.h"
 #include "Observer.h"
 #include <vector>
@@ -53,5 +57,5 @@ Subject::~Subject(){
 }
 
 Subject::Subject() {
-    
+
 }

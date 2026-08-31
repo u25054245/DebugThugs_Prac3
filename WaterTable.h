@@ -1,3 +1,7 @@
+//u25420314 - Christian Khalid
+//u25054245 - Nathan Spavins
+//u25265718 - Jack Reid
+
 #ifndef WATERTABLE_H
 #define WATERTABLE_H
 
