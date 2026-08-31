@@ -33,6 +33,15 @@ void Subject::notify(){
     }
 }
 
+void Subject::issueNotice(NoticeType notice){
+    currentNotice = notice;
+    notify();
+}
+
+NoticeType Subject::getCurrentNotice() const{
+    return currentNotice;
+}
+
 Subject::~Subject(){
 
 }

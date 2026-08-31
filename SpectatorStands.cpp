@@ -14,7 +14,29 @@ SpectatorStands::SpectatorStands(){
 }
 
 void SpectatorStands::update(Subject* subject){
+    if (subject == nullptr)
+    {
+        return;
+    }
 
+    switch (subject->getCurrentNotice())
+    {
+    case NoticeType::WEATHER_ALERT:
+        close();
+        break;
+    case NoticeType::EVACUATE:
+        close();
+        break;
+    case NoticeType::RESUME:
+        open();
+    case NoticeType::SHEDULE_CHANGE:
+    case NoticeType::CAPICITY_ALERT:
+        getCapacity();
+    case NoticeType::MEDICAL_EMERGENCY:
+        break;
+    default:
+        break;
+    }
 }
 
 void SpectatorStands::open(){
@@ -31,17 +53,13 @@ void SpectatorStands::reportStatus() const{
     if(open){
         cout << "The spectator stands capacity is: "<< capacity << endl;
     }else{
-        return "Not Open"<< endl;
+        cout<< "Not Open"<< endl;
     }
 }
 
 int SpectatorStands::getCapacity() const{
     return capacity;
 }
-
-
-
-
 
 
 SpectatorStands::~SpectatorStands(){

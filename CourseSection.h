@@ -6,10 +6,11 @@
 #include <vector>
 #include "MarathonEvent.h"
 #include "Observer.h"
+#include "Subject.h"
 
 using namespace std;
 
-class CourseSection : public MarathonEvent, public Observer{
+class CourseSection : public MarathonEvent, public Observer, public Subject{
     private:
         vector<MarathonEvent*> children;
     public:
@@ -18,10 +19,10 @@ class CourseSection : public MarathonEvent, public Observer{
         MarathonEvent* release(MarathonEvent* child);
         virtual void open() override;
         virtual void close() override;
-        virtual void getStatus() const override;
+        virtual void reportStatus() const override;
         virtual int getCapacity() const override;
         void update(Subject* subject);
-        courseSection();
+        CourseSection();
 
     
 };

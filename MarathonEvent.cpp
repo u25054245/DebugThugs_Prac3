@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "MarathonEvent.h"
-#include "Observer"
+#include "Observer.h"
 
 using namespace std;
 

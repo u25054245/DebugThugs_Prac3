@@ -5,6 +5,8 @@
 #include "Observer.h"
 #include "WaterTable.h"
 #include "Subject.h"
+#include "CourseSection.h"
+#include "NoticeType.h"
 
 using namespace std;
 
@@ -15,7 +17,30 @@ WaterTable::WaterTable(){
 }
 
 void WaterTable::update(Subject* subject){
+    if (subject == nullptr)
+    {
+        return;
+    }
 
+    switch (subject->getCurrentNotice())
+    {
+    case NoticeType::WEATHER_ALERT:
+        break;
+    case NoticeType::EVACUATE:
+        close();
+        break;
+    case NoticeType::RESUME:
+        open();
+    case NoticeType::SHEDULE_CHANGE:
+        refill();
+    case NoticeType::CAPICITY_ALERT:
+    case NoticeType::MEDICAL_EMERGENCY:
+        break;
+    default:
+        break;
+    }
+
+    
 }
 
 void WaterTable::open(){
@@ -40,7 +65,7 @@ int WaterTable::getCapacity() const{
     return 500;
 }
 
-int WaterTable::getRemainingCups(){
+int WaterTable::getRemainingCups() const{
     return remainingCups;
 }
 

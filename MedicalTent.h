@@ -20,7 +20,7 @@ class MedicalTent : public MarathonEvent, public Observer{
         void open() override;
         void close() override;
         void reportStatus() const override;
-        void getCapacity() const override;
+        int getCapacity() const override;
         int getAlertLevel() const;
         void setAlertLevel(int level);
         

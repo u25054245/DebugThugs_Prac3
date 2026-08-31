@@ -13,8 +13,9 @@ class MarathonEvent{
         virtual void open() = 0;
         virtual void close() = 0;
         virtual void reportStatus() const = 0;
-        virtual void getCapacity() const = 0;
+        virtual int getCapacity() const = 0;
         string getName();
+        MarathonEvent();
         MarathonEvent(string n);
         virtual ~MarathonEvent();
 
