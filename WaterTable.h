@@ -20,8 +20,8 @@ class WaterTable : public MarathonEvent, public Observer{
         void open() override;
         void close() override;
         void reportStatus() const override;
-        void getCapacity() const override;
-        int getRemainingCups();
+        int getCapacity() const;
+        int getRemainingCups() const;
         void refill();
 
         ~WaterTable();
