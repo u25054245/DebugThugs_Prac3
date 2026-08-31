@@ -19,7 +19,7 @@ void Subject::detach(Observer* observer){
     observers.erase(remove(observers.begin(), observers.end(), observer), observers.end());
     if (observer)
     {
-        observer->unrackSubject(this);
+        observer->untrackSubject(this);
     }
     
 }

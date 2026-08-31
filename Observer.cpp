@@ -11,7 +11,7 @@ void Observer::trackSubject(Subject* sub){
     
 }
 
-void Observer::unrackSubject(Subject* sub){
+void Observer::untrackSubject(Subject* sub){
     subjects.erase(remove(subjects.begin(), subjects.end(), sub), subjects.end());
 }
 

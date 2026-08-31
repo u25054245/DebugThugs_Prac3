@@ -15,7 +15,7 @@ class Observer{
         virtual ~Observer();
 
         void trackSubject(Subject* sub);
-        void unrackSubject(Subject* sub);
+        void untrackSubject(Subject* sub);
 };
 
 #endif

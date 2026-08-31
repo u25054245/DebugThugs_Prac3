@@ -1,0 +1,12 @@
+#ifndef NOTICETYPE_H
+#define NOTICETYPE_H
+
+enum class NoticeType{
+    SHEDULE_CHANGE,
+    RESUME,
+    CAPICITY_ALERT,
+    WEATHER_ALERT,
+    MEDICAL_EMERGENCY,
+    EVACUATE
+};
+#endif
