@@ -18,6 +18,7 @@ class Subject{
         NoticeType getCurrentNotice() const;
 
         virtual ~Subject();
+        Subject();
 
 };
 

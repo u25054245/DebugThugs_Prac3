@@ -10,10 +10,8 @@
 
 using namespace std;
 
-WaterTable::WaterTable(){
+WaterTable::WaterTable(string name) : MarathonEvent(name) {
     remainingCups = 1000;
-    
-
 }
 
 void WaterTable::update(Subject* subject){
@@ -31,9 +29,12 @@ void WaterTable::update(Subject* subject){
         break;
     case NoticeType::RESUME:
         open();
+        break;
     case NoticeType::SHEDULE_CHANGE:
         refill();
+        break;
     case NoticeType::CAPICITY_ALERT:
+        break;
     case NoticeType::MEDICAL_EMERGENCY:
         break;
     default:
@@ -44,17 +45,17 @@ void WaterTable::update(Subject* subject){
 }
 
 void WaterTable::open(){
-    cout<<"The water table has opened get drinks!!"<<endl;
-
+    cout<<"The water table has opened get drinks!"<<endl;
+    operational = true;
 }
 
 void WaterTable::close(){
     cout<<"The water table has closed for no water available or not allowed to hand out."<<endl;
-
+    operational = false;
 }
 
 void WaterTable::reportStatus() const{
-    if(open){
+    if(operational){
         cout << "Water Table is OPEN. "<< remainingCups << " cups remaining."<<endl;
     }else{
         cout << "The table is closed"<<endl;
@@ -71,4 +72,8 @@ int WaterTable::getRemainingCups() const{
 
 void WaterTable::refill(){
     remainingCups = 1000;
+}
+
+WaterTable::~WaterTable() {
+
 }

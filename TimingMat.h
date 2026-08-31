@@ -1,5 +1,5 @@
-#ifndef MEDICALTENT_H
-#define MEDICALTENT_H
+#ifndef TIMINGMAT_H
+#define TIMINGMAT_H
 
 #include <string>
 #include <iostream>
@@ -10,10 +10,10 @@
 
 using namespace std;
 
-class MedicalTent : public MarathonEvent, public Observer{
+class TimingMat : public MarathonEvent, public Observer{
     private:
-        int alertLevel;
-        bool occupation;
+        int recordedRunners;
+        bool operational;
         
     public:
         void update(Subject* subject);
@@ -21,11 +21,11 @@ class MedicalTent : public MarathonEvent, public Observer{
         void close() override;
         void reportStatus() const override;
         int getCapacity() const override;
-        int getAlertLevel() const;
-        void setAlertLevel(int level);
+        int getRecordedRunners() const;
+        void setRecordedRunners(int runners);
         
 
-        ~MedicalTent();
-        MedicalTent(string name);
+        ~TimingMat();
+        TimingMat(string name);
 };
 #endif

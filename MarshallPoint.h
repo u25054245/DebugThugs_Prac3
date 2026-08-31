@@ -13,19 +13,19 @@ using namespace std;
 class MarshallPoint : public MarathonEvent, public Observer{
     private:
         int sectorid;
-       
+        bool occupation;
         
     public:
         void update(Subject* subject);
         void open() override;
         void close() override;
         void reportStatus() const override;
-        void getCapacity() const override;
+        int getCapacity() const override;
         int getSectorID() const;
         void setSectorID(int id);
         
 
         ~MarshallPoint();
-        MarshallPoint();
+        MarshallPoint(string name);
 };
 #endif

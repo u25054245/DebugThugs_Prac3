@@ -22,8 +22,8 @@ class CourseSection : public MarathonEvent, public Observer, public Subject{
         virtual void reportStatus() const override;
         virtual int getCapacity() const override;
         void update(Subject* subject);
-        CourseSection();
-
+        CourseSection(string name);
+        ~CourseSection();
     
 };
 

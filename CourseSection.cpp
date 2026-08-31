@@ -15,31 +15,35 @@ void CourseSection::add(MarathonEvent* child){
 void CourseSection::remove(MarathonEvent* child){
     for(vector<MarathonEvent*>::iterator it = children.begin(); it != children.end(); ++it){
         if(*it == child){
+            MarathonEvent* temp = *it;
             children.erase(it);
+            delete temp;
             return;
         }
     }
 }
 
  MarathonEvent* CourseSection::release(MarathonEvent* child){
-
+    for(vector<MarathonEvent*>::iterator it = children.begin(); it != children.end(); ++it) {
+        if(*it == child) {
+            children.erase(it);
+            return child;
+        }
+    }
+    return nullptr;
  }
 
 void CourseSection::open(){
     for(size_t i = 0; i < children.size(); ++i){
         children[i]->open();
-
     }
-
  }
 
 void CourseSection::close(){
     for(size_t i = 0; i < children.size(); ++i){
         children[i]->close();
-
     }
-
- }
+}
 
 int CourseSection::getCapacity() const{
     int total = 0;
@@ -52,7 +56,7 @@ int CourseSection::getCapacity() const{
  }
 
 void CourseSection::reportStatus() const{
-    string total = name + ":";
+    string total = name + ":\n";
     cout << total;
     for(size_t i = 0; i < children.size(); ++i){
         children[i]->reportStatus();
@@ -63,12 +67,19 @@ void CourseSection::reportStatus() const{
  }
 
 void CourseSection::update(Subject* subject){
-    if(subject != nullptr){
-        issueNotice(subject->getCurrentNotice());
-    }
+    if(subject == nullptr) return;
+    
+    issueNotice(subject->getCurrentNotice());
  }
 
-CourseSection::CourseSection(){
-    
+CourseSection::CourseSection(string name) : MarathonEvent(name) {
+
 }
 
+CourseSection::~CourseSection() {
+    for(size_t i = 0; i < children.size(); i++) {
+        delete children[i];
+    }
+
+    children.clear();
+}

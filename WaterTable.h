@@ -25,7 +25,7 @@ class WaterTable : public MarathonEvent, public Observer{
         void refill();
 
         ~WaterTable();
-        WaterTable();
+        WaterTable(string name);
 };
 #endif
 

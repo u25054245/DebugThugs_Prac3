@@ -8,9 +8,9 @@
 
 using namespace std;
 
-SpectatorStands::SpectatorStands(){
+SpectatorStands::SpectatorStands(string name) : MarathonEvent(name){
     capacity = 500;
-    
+    operational = true;
 }
 
 void SpectatorStands::update(Subject* subject){
@@ -29,9 +29,12 @@ void SpectatorStands::update(Subject* subject){
         break;
     case NoticeType::RESUME:
         open();
+        break;
     case NoticeType::SHEDULE_CHANGE:
+        break;
     case NoticeType::CAPICITY_ALERT:
         getCapacity();
+        break;
     case NoticeType::MEDICAL_EMERGENCY:
         break;
     default:
@@ -41,16 +44,16 @@ void SpectatorStands::update(Subject* subject){
 
 void SpectatorStands::open(){
     cout<<"The Spectator stands are open come watch"<<endl;
-
+    operational = true;
 }
 
 void SpectatorStands::close(){
     cout<<"The specatator stands are closed"<<endl;
-
+    operational = false;
 }
 
 void SpectatorStands::reportStatus() const{
-    if(open){
+    if(operational) {
         cout << "The spectator stands capacity is: "<< capacity << endl;
     }else{
         cout<< "Not Open"<< endl;

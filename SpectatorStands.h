@@ -13,18 +13,17 @@ using namespace std;
 class SpectatorStands : public MarathonEvent, public Observer{
     private:
         int capacity;
-        
+        bool operational;
     public:
         void update(Subject* subject);
         void open() override;
         void close() override;
         void reportStatus() const override;
         int getCapacity() const override;
-        int getCapacity() const;
         
         
 
         ~SpectatorStands();
-        SpectatorStands();
+        SpectatorStands(string name);
 };
 #endif

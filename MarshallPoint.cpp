@@ -8,9 +8,9 @@
 
 using namespace std;
 
-MarshallPoint::MarshallPoint(){
+MarshallPoint::MarshallPoint(string name) : MarathonEvent(name) {
     sectorid = 0;
-    
+    occupation = true;
 }
 
 void MarshallPoint::update(Subject* subject){
@@ -27,13 +27,16 @@ void MarshallPoint::update(Subject* subject){
         break;
     case NoticeType::RESUME:
         open();
+        break;
     case NoticeType::SHEDULE_CHANGE:
-        close()
+        close();
         break;
     case NoticeType::CAPICITY_ALERT:
-        cout<< getCapacity() << endl;
+        cout << getCapacity() << endl;
+        break;
     case NoticeType::MEDICAL_EMERGENCY:
         close();
+        break;
     default:
         break;
     }
@@ -42,19 +45,19 @@ void MarshallPoint::update(Subject* subject){
 
 void MarshallPoint::open(){
     cout<<"The Marshallpoitn has been occupied"<<endl;
-
+    occupation = true;
 }
 
 void MarshallPoint::close(){
     cout<<"The Marshall point has been disbanded"<<endl;
-
+    occupation = false;
 }
 
 void MarshallPoint::reportStatus() const{
-    if(open){
+    if(occupation) {
         cout << "A Marshall is at point: "<< sectorid << endl;
     }else{
-        return "There are no marshalls in the post"<< endl;
+        cout << "There are no marshalls in the post" << endl;
     }
 }
 
@@ -64,7 +67,7 @@ int MarshallPoint::getCapacity() const{
 
 
 int MarshallPoint::getSectorID() const{
-    return alertLevel;
+    return sectorid;
 }
 
 void MarshallPoint::setSectorID(int id){

@@ -3,14 +3,14 @@
 #include <vector>
 #include "MarshallPoint.h"
 #include "Observer.h"
-#include "TimimgMat.h"
+#include "TimingMat.h"
 #include "Subject.h"
 
 using namespace std;
 
-TimingMat::TimingMat(){
+TimingMat::TimingMat(string name) : MarathonEvent(name) {
     recordedRunners = 0;
-    
+    operational = true;
 }
 
 void TimingMat::update(Subject* subject){
@@ -22,17 +22,21 @@ void TimingMat::update(Subject* subject){
     switch (subject->getCurrentNotice())
     {
     case NoticeType::WEATHER_ALERT:
+        break;
     case NoticeType::EVACUATE:
         close();
         break;
     case NoticeType::RESUME:
         open();
+        break;
     case NoticeType::SHEDULE_CHANGE:
-        close()
+        close();
         break;
     case NoticeType::CAPICITY_ALERT:
         cout<< getCapacity() << endl;
+        break;
     case NoticeType::MEDICAL_EMERGENCY:
+        break;
     default:
         break;
     }
@@ -42,19 +46,19 @@ void TimingMat::update(Subject* subject){
 
 void TimingMat::open(){
     cout<<"The timingMat is recording runners"<<endl;
-
+    operational = true;
 }
 
 void TimingMat::close(){
     cout<<"The Timingmat has stopped recording"<<endl;
-
+    operational = false;
 }
 
 void TimingMat::reportStatus() const{
-    if(open){
+    if(operational){
         cout << "the timing mat has recorded : "<< recordedRunners <<" runners"<< endl;
     }else{
-        return "The Timing Mat is not operational"<< endl;
+        cout << "The Timing Mat is not operational"<< endl;
     }
 }
 
@@ -63,12 +67,12 @@ int TimingMat::getCapacity() const{
 }
 
 
-int TimingMat::getSectorID() const{
-    return alertLevel;
+int TimingMat::getRecordedRunners() const{
+    return recordedRunners;
 }
 
-void TimingMat::setSectorID(int id){
-    sectorid = id;
+void TimingMat::setRecordedRunners(int runners){
+    recordedRunners = runners;
 }
 
 TimingMat::~TimingMat(){

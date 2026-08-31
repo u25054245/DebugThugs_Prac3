@@ -43,5 +43,15 @@ NoticeType Subject::getCurrentNotice() const{
 }
 
 Subject::~Subject(){
+    vector<Observer*> temp = observers;
 
+    for(size_t i = 0; i < temp.size(); i++) {
+        if(temp[i] != nullptr) {
+            temp[i]->untrackSubject(this);
+        }
+    }
+}
+
+Subject::Subject() {
+    
 }
