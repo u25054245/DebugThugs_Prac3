@@ -9,8 +9,8 @@
 using namespace std;
 
 WaterTable::WaterTable(){
-    remaining cupe = 1000;
-    open = false;
+    remainingCups = 1000;
+    
 
 }
 
@@ -19,12 +19,12 @@ void WaterTable::update(Subject* subject){
 }
 
 void WaterTable::open(){
-    operational = true;
+    cout<<"The water table has opened get drinks!!"<<endl;
 
 }
 
 void WaterTable::close(){
-    operational = false;
+    cout<<"The water table has closed for no water available or not allowed to hand out."<<endl;
 
 }
 
@@ -32,7 +32,7 @@ void WaterTable::reportStatus() const{
     if(open){
         cout << "Water Table is OPEN. "<< remainingCups << " cups remaining."<<endl;
     }else{
-        return remainingCups;
+        cout << "The table is closed"<<endl;
     }
 }
 
